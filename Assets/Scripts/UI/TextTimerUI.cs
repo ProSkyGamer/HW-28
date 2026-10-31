@@ -15,9 +15,9 @@ public class TextTimerUI : TimerUI
         SetTimerText(Timer.TimeLeft);
     }
 
-    protected override void Timer_OnTimerUpdated()
+    protected override void Timer_OnTimerUpdated(float value)
     {
-        SetTimerText(Timer.TimeLeft);
+        SetTimerText(value);
     }
 
     private void SetTimerText(float time)

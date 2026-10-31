@@ -1,5 +1,6 @@
 #region
 
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -33,7 +34,7 @@ public abstract class TimerUI : MonoBehaviour
 
     protected abstract void InitializeUIInternal();
 
-    protected abstract void Timer_OnTimerUpdated();
+    protected abstract void Timer_OnTimerUpdated(float value);
 
     private void StartTimerButtonClicked()
     {
@@ -71,5 +72,10 @@ public abstract class TimerUI : MonoBehaviour
         _startTimer.interactable = Timer.IsStarted == false;
         _toggleTimer.interactable = Timer.IsStarted;
         _stopTimer.interactable = Timer.IsStarted;
+    }
+
+    private void OnDestroy()
+    {
+        Timer.TimerUpdated -= Timer_OnTimerUpdated;
     }
 }

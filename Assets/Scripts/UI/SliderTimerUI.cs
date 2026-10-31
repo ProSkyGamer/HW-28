@@ -19,9 +19,9 @@ public class SliderTimerUI : TimerUI
         SetSliderValue(Timer.TotalTime, Timer.TimeLeft);
     }
 
-    protected override void Timer_OnTimerUpdated()
+    protected override void Timer_OnTimerUpdated(float value)
     {
-        SetSliderValue(Timer.TotalTime, Timer.TimeLeft);
+        SetSliderValue(Timer.TotalTime, value);
     }
 
     private void SetSliderValue(float totalTime, float timeLeft)

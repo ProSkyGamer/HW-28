@@ -10,7 +10,7 @@ namespace Timer
 {
     public class Timer
     {
-        public event Action TimerUpdated;
+        public event Action<float> TimerUpdated;
 
         private Coroutine _timerCoroutine;
         private readonly MonoBehaviour _coroutineRunner;
@@ -93,7 +93,7 @@ namespace Timer
                 if (TimeLeft < 0f)
                     TimeLeft = 0f;
 
-                TimerUpdated?.Invoke();
+                TimerUpdated?.Invoke(TimeLeft);
 
                 yield return null;
             }

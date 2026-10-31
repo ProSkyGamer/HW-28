@@ -1,5 +1,6 @@
 ﻿#region
 
+using System;
 using System.Collections.Generic;
 using Bank;
 using UnityEngine;
@@ -53,5 +54,10 @@ public class BankUI : MonoBehaviour
         createdCurrencyUI.Initialize(_currencySpritesSO.GetCurrencySpriteFor(currencyType), startingAmount);
 
         _allCreatedCurrencyUIs.Add(currencyType, createdCurrencyUI);
+    }
+
+    private void OnDestroy()
+    {
+        _bank.CurrencyValueChanged -= Bank_OnCurrencyValueChanged;
     }
 }
